@@ -1,10 +1,13 @@
-import 'package:firebase/view/login/login_screen.dart';
+import 'package:firebase/controller/provider/auth_provider.dart';
+import 'package:firebase/view/home/home_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -13,10 +16,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
-      home: const LoginScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: ((context) => AuthProvider(FirebaseAuth.instance)),
+        ),
+        StreamProvider(
+            create: (context) => context.watch<AuthProvider>().stream(),
+            initialData: null),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            appBarTheme: const AppBarTheme(
+          centerTitle: true,
+        )),
+        home: const HomeScreen(),
+      ),
     );
   }
 }

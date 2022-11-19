@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1024070356694",
+    "project_id": "fcmauth-c6eca",
+    "storage_bucket": "fcmauth-c6eca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024070356694:android:72c9ab921010745b2b0377",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024070356694-882g67u5555ba7ibcbidrhiv9injq4i2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-iT3peXIacMs378OfZLNwMVbirPL2x8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1024070356694-882g67u5555ba7ibcbidrhiv9injq4i2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1024070356694-g8s5c9hc61emamhvuaug809eg5bjik40.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebase"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

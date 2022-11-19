@@ -1,17 +1,23 @@
+import 'package:firebase/controller/provider/auth_provider.dart';
 import 'package:firebase/view/core/space.dart';
 import 'package:firebase/view/core/style.dart';
 import 'package:firebase/view/login/widgets/text_form_field.dart';
+import 'package:firebase/view/register/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+final TextEditingController email = TextEditingController();
+final TextEditingController password = TextEditingController();
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size.width;
-
+    final provider = Provider.of<AuthProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login Screen"),
+        title: const Text("Log In Account"),
       ),
       body: SafeArea(
         child: Center(
@@ -34,18 +40,28 @@ class LoginScreen extends StatelessWidget {
                     style: textStyel1,
                   ),
                   hight30,
-                  const TextFormFieldCustom(
+                  TextFormFieldCustom(
+                    keyboardType: TextInputType.emailAddress,
+                    controller: email,
                     labelText: 'E-mail',
                   ),
                   hight10,
-                  const TextFormFieldCustom(
+                  TextFormFieldCustom(
+                    keyboardType: TextInputType.visiblePassword,
+                    controller: password,
+                    obscureText: true,
                     labelText: 'Password',
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => const RegisterScreen(),
+                          ));
+                        },
                         child: const Text(
                           "Register",
                           style: textStyel,
@@ -60,18 +76,29 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    width: double.maxFinite,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(
-                          0,
-                        ),
-                      ),
-                      child: const Text('Sing In'),
+                  if (provider.isLoading)
+                    const CircularProgressIndicator(
+                      strokeWidth: 2,
                     ),
-                  ),
+                  if (!provider.isLoading)
+                    SizedBox(
+                      width: double.maxFinite,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          provider.signInPressed(
+                            email.text,
+                            password.text,
+                            context,
+                          );
+                        },
+                        style: ButtonStyle(
+                          elevation: MaterialStateProperty.all(
+                            0,
+                          ),
+                        ),
+                        child: const Text('Sing In'),
+                      ),
+                    ),
                   hight10,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -114,7 +141,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               hight10,
                               const Text(
-                                'Sign in with oogle',
+                                'Sign in with Google',
                               ),
                             ],
                           ),
