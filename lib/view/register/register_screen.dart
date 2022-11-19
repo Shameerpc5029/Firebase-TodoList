@@ -125,7 +125,9 @@ class RegisterScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              provider.googleSignUpPressed(context);
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
                                 Colors.grey[200],
@@ -151,7 +153,9 @@ class RegisterScreen extends StatelessWidget {
                             ),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              provider.appleSignUpPressed(context);
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
                                 Colors.black,
