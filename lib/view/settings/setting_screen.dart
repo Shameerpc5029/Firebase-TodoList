@@ -48,11 +48,8 @@ class SettingsScreen extends StatelessWidget {
                           ? value.downloadUrl.isEmpty
                               ? const CircleAvatar(
                                   radius: 50,
-                                  backgroundColor: Colors.black,
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: 2,
-                                  ),
-                                )
+                                  backgroundImage: AssetImage(
+                                      'assets/image/—Pngtree—business male icon vector_4187852.png'))
                               : CircleAvatar(
                                   backgroundImage: NetworkImage(
                                     value.downloadUrl,

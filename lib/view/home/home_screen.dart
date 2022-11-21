@@ -115,7 +115,10 @@ class HomeScreen extends StatelessWidget {
                                     },
                                     background: Container(
                                       color: Colors.red,
-                                      child: const Icon(Icons.delete),
+                                      child: const Icon(
+                                        Icons.delete,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                     child: ListTile(
                                       title: Text(
