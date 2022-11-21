@@ -22,7 +22,6 @@ class AuthProvider with ChangeNotifier {
         email: email.trim(),
         password: password.trim(),
       );
-
       isLoading = false;
       notifyListeners();
       return Future.value('');

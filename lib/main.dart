@@ -1,4 +1,5 @@
 import 'package:firebase/controller/provider/auth_provider.dart';
+import 'package:firebase/controller/provider/user_detials_provider.dart';
 import 'package:firebase/view/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,7 +20,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: ((context) => AuthProvider(FirebaseAuth.instance)),
+          create: (context) => AuthProvider(FirebaseAuth.instance),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UserProvider(FirebaseAuth.instance),
         ),
         StreamProvider(
             create: (context) => context.watch<AuthProvider>().stream(),
