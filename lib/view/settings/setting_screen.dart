@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:firebase/controller/provider/auth_provider.dart';
+import 'package:firebase/controller/provider/user_detials_provider.dart';
 import 'package:firebase/view/core/space.dart';
+import 'package:firebase/view/core/style.dart';
 import 'package:firebase/view/login/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +14,12 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<UserProvider>(context, listen: false).downloadImage();
+    });
+    final provider = Provider.of<UserProvider>(context);
+    final provider2 = Provider.of<AuthProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -39,17 +49,29 @@ class SettingsScreen extends StatelessWidget {
             Stack(
               alignment: AlignmentDirectional.bottomEnd,
               children: [
-                const CircleAvatar(
-                  radius: 55,
-                  child: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: NetworkImage(
-                        'https://static01.nyt.com/images/2019/04/16/sports/16onsoccerweb-2/merlin_153612873_5bb119b9-8972-4087-b4fd-371cab8c5ba2-superJumbo.jpg?quality=75&auto=webp'),
-                  ),
+                CircleAvatar(
+                  radius: 53,
+                  child: provider.image == null
+                      ? const CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage(
+                            'assets/image/—Pngtree—business male icon vector_4187852.png',
+                          ),
+                        )
+                      : CircleAvatar(
+                          radius: 50,
+                          backgroundImage: FileImage(
+                            File(
+                              provider.image!.path,
+                            ),
+                          ),
+                        ),
                 ),
                 CircleAvatar(
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      provider.getImage();
+                    },
                     child: const Icon(
                       Icons.photo,
                     ),
@@ -58,7 +80,13 @@ class SettingsScreen extends StatelessWidget {
               ],
             ),
             hight30,
-            const Text('Email - ')
+            Text(
+              'Email - ${provider2.firebase.currentUser!.email}',
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            )
           ],
         ),
       ),

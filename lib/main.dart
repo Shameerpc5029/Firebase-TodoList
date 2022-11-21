@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           create: (context) => AuthProvider(FirebaseAuth.instance),
         ),
         ChangeNotifierProvider(
-          create: (context) => UserProvider(FirebaseAuth.instance),
+          create: (context) => UserProvider(),
         ),
         StreamProvider(
             create: (context) => context.watch<AuthProvider>().stream(),
