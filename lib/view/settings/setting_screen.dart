@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase/controller/provider/user_detials_provider.dart';
+import 'package:firebase/view/core/color.dart';
 import 'package:firebase/view/core/space.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,11 +18,12 @@ class SettingsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Profile'),
         actions: [
           TextButton.icon(
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(
-                Colors.white,
+                whiteColor,
               ),
             ),
             onPressed: () {
@@ -34,7 +36,6 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             hight20,
             Stack(
@@ -49,7 +50,9 @@ class SettingsScreen extends StatelessWidget {
                               ? const CircleAvatar(
                                   radius: 50,
                                   backgroundImage: AssetImage(
-                                      'assets/image/—Pngtree—business male icon vector_4187852.png'))
+                                    'assets/image/—Pngtree—business male icon vector_4187852.png',
+                                  ),
+                                )
                               : CircleAvatar(
                                   backgroundImage: NetworkImage(
                                     value.downloadUrl,
@@ -88,6 +91,7 @@ class SettingsScreen extends StatelessWidget {
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
+              maxLines: 1,
             )
           ],
         ),

@@ -8,7 +8,6 @@ class AuthProvider with ChangeNotifier {
   AuthProvider(this.firebase);
   bool isLoading = false;
   Stream<User?> stream() => firebase.authStateChanges();
-
   bool get loading => isLoading;
   Future<void> signOut() async {
     await firebase.signOut();
@@ -46,7 +45,6 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
-    notifyListeners();
   }
 
   Future<String> signUp(String email, String password) async {
@@ -81,7 +79,6 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
-    notifyListeners();
   }
 
   Future<String> googleSignIn() async {
@@ -210,7 +207,6 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
-    notifyListeners();
   }
 
   void googleSignInPressed(context) async {
@@ -227,7 +223,6 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
-    notifyListeners();
   }
 
   void appleSignUpPressed(context) async {
@@ -244,7 +239,6 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
-    notifyListeners();
   }
 
   void appleSignInPressed(context) async {
@@ -261,6 +255,11 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
-    notifyListeners();
   }
+
+//  bool obscureText = true;
+//   void toggle(obscureText) {
+//     obscureText = !obscureText;
+//     notifyListeners();
+//   }
 }

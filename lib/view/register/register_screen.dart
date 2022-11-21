@@ -1,4 +1,5 @@
 import 'package:firebase/controller/provider/auth_provider.dart';
+import 'package:firebase/view/core/color.dart';
 import 'package:firebase/view/core/space.dart';
 import 'package:firebase/view/core/style.dart';
 import 'package:firebase/view/home/home_screen.dart';
@@ -36,8 +37,8 @@ class RegisterScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.network(
-                        "https://cdn.dribbble.com/users/528264/screenshots/3140440/firebase_logo.png",
+                      Image.asset(
+                        "assets/image/firebase_logo.webp",
                         height: 150,
                       ),
                       const Text(
@@ -136,15 +137,15 @@ class RegisterScreen extends StatelessWidget {
                                 Colors.grey[200],
                               ),
                               foregroundColor: MaterialStateProperty.all(
-                                Colors.black,
+                                blackColor,
                               ),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(5),
                               child: Column(
                                 children: [
-                                  Image.network(
-                                    'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png',
+                                  Image.asset(
+                                    'assets/image/google_logo.png',
                                     width: 30,
                                   ),
                                   hight10,
@@ -171,8 +172,8 @@ class RegisterScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(5),
                               child: Column(
                                 children: [
-                                  Image.network(
-                                    'https://1000logos.net/wp-content/uploads/2016/10/Apple_logo_grey.png',
+                                  Image.asset(
+                                    'assets/image/Apple_logo.png',
                                     width: 50,
                                   ),
                                   hight10,

@@ -4,9 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase/controller/provider/auth_provider.dart';
 import 'package:firebase/controller/provider/todo_list_provider.dart';
 import 'package:firebase/controller/provider/user_detials_provider.dart';
+import 'package:firebase/view/core/color.dart';
 import 'package:firebase/view/core/space.dart';
 import 'package:firebase/view/core/style.dart';
-
 import 'package:firebase/view/login/login_screen.dart';
 import 'package:firebase/view/widgets/text_form_field.dart';
 import 'package:firebase/view/settings/setting_screen.dart';
@@ -40,17 +40,11 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      CupertinoPageRoute(
-                        builder: (context) => const SettingsScreen(),
-                      ),
-                    );
-                  },
+                  onTap: () => providerTodo.goToSettings(context),
                   child: provider.image == null
                       ? provider.downloadUrl.isEmpty
                           ? const CircleAvatar(
-                              backgroundColor: Colors.white,
+                              backgroundColor: whiteColor,
                               child: Icon(Icons.person),
                             )
                           : CircleAvatar(
@@ -66,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ],
-            title: const Text("Home screen"),
+            title: const Text("Task Manager"),
           ),
           body: Padding(
             padding: const EdgeInsets.all(10),
@@ -108,23 +102,20 @@ class HomeScreen extends StatelessWidget {
                             children: snapshot.data!.docs.map((documets) {
                               return Consumer<TodoProvider>(
                                 builder: (context, value, child) {
-                                  return Dismissible(
-                                    key: Key(documets.id),
-                                    onDismissed: (direction) {
-                                      value.deleteTask(documets.id);
-                                    },
-                                    background: Container(
-                                      color: Colors.red,
-                                      child: const Icon(
-                                        Icons.delete,
-                                        color: Colors.white,
+                                  return ListTile(
+                                    trailing: IconButton(
+                                      onPressed: () => value.showDeleteDialog(
+                                        documets.id,
+                                        context,
+                                      ),
+                                      icon: const Icon(
+                                        Icons.delete_sweep_outlined,
+                                        color: redColor,
                                       ),
                                     ),
-                                    child: ListTile(
-                                      title: Text(
-                                        documets["title"],
-                                        style: textStyel3,
-                                      ),
+                                    title: Text(
+                                      documets["title"],
+                                      style: textStyel3,
                                     ),
                                   );
                                 },

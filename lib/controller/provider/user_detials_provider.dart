@@ -54,5 +54,6 @@ class UserProvider with ChangeNotifier {
           builder: (context) => const LoginScreen(),
         ),
         (route) => false);
+    notifyListeners();
   }
 }
