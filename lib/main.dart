@@ -1,8 +1,10 @@
 import 'package:firebase/controller/provider/auth_provider.dart';
+import 'package:firebase/controller/provider/todo_list_provider.dart';
 import 'package:firebase/controller/provider/user_detials_provider.dart';
 import 'package:firebase/view/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +26,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => UserProvider(),
+        ),
+          ChangeNotifierProvider(
+          create: (context) => TodoProvider(),
         ),
         StreamProvider(
             create: (context) => context.watch<AuthProvider>().stream(),

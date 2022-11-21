@@ -5,6 +5,10 @@ const textStyel1 = TextStyle(
   color: tColor,
   fontSize: 30,
 );
+const textStyel3 = TextStyle(
+  color: tColor,
+  fontWeight: FontWeight.bold,
+);
 const textStyel = TextStyle(
   color: tColor,
 );

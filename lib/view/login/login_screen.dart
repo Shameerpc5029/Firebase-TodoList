@@ -1,8 +1,9 @@
 import 'package:firebase/controller/provider/auth_provider.dart';
 import 'package:firebase/view/core/space.dart';
 import 'package:firebase/view/core/style.dart';
-import 'package:firebase/view/login/widgets/text_form_field.dart';
+
 import 'package:firebase/view/register/register_screen.dart';
+import 'package:firebase/view/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size.width;
     final provider = Provider.of<AuthProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Log In Account"),
@@ -70,7 +72,7 @@ class LoginScreen extends StatelessWidget {
                       TextButton(
                         onPressed: () {},
                         child: const Text(
-                          "Forgot Password",
+                          "Forgot Password?",
                           style: textStyel,
                         ),
                       ),
