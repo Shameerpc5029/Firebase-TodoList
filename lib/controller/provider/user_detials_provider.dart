@@ -44,10 +44,11 @@ class UserProvider with ChangeNotifier {
     } catch (e) {
       log('getImageException${e.toString()}');
     }
+    notifyListeners();
   }
 
   Future<void> signOut(context) async {
-    await firebase.signOut();
+    // await firebase.signOut();
     downloadUrl = "";
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(

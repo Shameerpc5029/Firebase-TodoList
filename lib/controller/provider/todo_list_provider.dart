@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase/view/core/color.dart';
 import 'package:firebase/view/settings/setting_screen.dart';
@@ -70,7 +69,6 @@ class TodoProvider with ChangeNotifier {
         builder: (context) => const SettingsScreen(),
       ),
     );
+    notifyListeners();
   }
-
-  
 }

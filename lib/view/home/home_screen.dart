@@ -9,9 +9,7 @@ import 'package:firebase/view/core/space.dart';
 import 'package:firebase/view/core/style.dart';
 import 'package:firebase/view/login/login_screen.dart';
 import 'package:firebase/view/widgets/text_form_field.dart';
-import 'package:firebase/view/settings/setting_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

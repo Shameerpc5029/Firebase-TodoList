@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase/controller/provider/auth_provider.dart';
 import 'package:firebase/controller/provider/user_detials_provider.dart';
 import 'package:firebase/view/core/color.dart';
 import 'package:firebase/view/core/space.dart';
@@ -28,6 +29,7 @@ class SettingsScreen extends StatelessWidget {
             ),
             onPressed: () {
               provider.signOut(context);
+              Provider.of<AuthProvider>(context, listen: false).signOut();
             },
             icon: const Icon(Icons.login_rounded),
             label: const Text('LogOut'),

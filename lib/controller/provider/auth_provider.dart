@@ -45,6 +45,7 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
   }
 
   Future<String> signUp(String email, String password) async {
@@ -79,6 +80,7 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
   }
 
   Future<String> googleSignIn() async {
@@ -207,6 +209,7 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
   }
 
   void googleSignInPressed(context) async {
@@ -223,6 +226,7 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
   }
 
   void appleSignUpPressed(context) async {
@@ -239,6 +243,7 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
   }
 
   void appleSignInPressed(context) async {
@@ -255,6 +260,7 @@ class AuthProvider with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
   }
 
 //  bool obscureText = true;
