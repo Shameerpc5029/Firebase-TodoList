@@ -59,20 +59,35 @@ class RegisterScreen extends StatelessWidget {
                       TextFormFieldCustom(
                         keyboardType: TextInputType.visiblePassword,
                         controller: password,
-                        obscureText: true,
+                        obscureText: provider.obscureText,
                         labelText: 'Password',
+                        suffix: IconButton(
+                          onPressed: () {
+                            provider.toggle();
+                          },
+                          icon: Icon(
+                            provider.obscureText
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: provider.obscureText
+                                ? Colors.blue
+                                : Colors.white,
+                          ),
+                          splashRadius: 20,
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
                             onPressed: () {
-                              Navigator.of(context)
-                                  .pushReplacement(MaterialPageRoute(
-                                builder: (context) {
-                                  return const LoginScreen();
-                                },
-                              ));
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const LoginScreen();
+                                  },
+                                ),
+                              );
                             },
                             child: const Text(
                               "Login",

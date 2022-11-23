@@ -15,8 +15,7 @@ class SettingsScreen extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<UserProvider>(context, listen: false).downloadImage();
     });
-    final provider = Provider.of<UserProvider>(context);
-
+    final provider = Provider.of<UserProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
@@ -94,7 +93,7 @@ class SettingsScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
               maxLines: 1,
-            )
+            ),
           ],
         ),
       ),

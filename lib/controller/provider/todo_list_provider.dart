@@ -65,7 +65,7 @@ class TodoProvider with ChangeNotifier {
 
   void goToSettings(context) {
     Navigator.of(context).push(
-      CupertinoPageRoute(
+      MaterialPageRoute(
         builder: (context) => const SettingsScreen(),
       ),
     );

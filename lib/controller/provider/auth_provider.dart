@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -263,9 +265,9 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-//  bool obscureText = true;
-//   void toggle(obscureText) {
-//     obscureText = !obscureText;
-//     notifyListeners();
-//   }
+  bool obscureText = true;
+  void toggle() {
+    obscureText = !obscureText;
+    notifyListeners();
+  }
 }

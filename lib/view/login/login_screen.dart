@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase/controller/provider/auth_provider.dart';
 import 'package:firebase/view/core/color.dart';
 import 'package:firebase/view/core/space.dart';
@@ -63,15 +65,22 @@ class LoginScreen extends StatelessWidget {
                           return TextFormFieldCustom(
                             keyboardType: TextInputType.visiblePassword,
                             controller: password,
-                            obscureText: true,
                             labelText: 'Password',
-                            // suffix: IconButton(
-                            //   onPressed: _toggle,
-                            //   icon: Icon(obscureText
-                            //       ? Icons.remove_red_eye_outlined
-                            //       : Icons.remove_red_eye),
-                            //   splashRadius: 20,
-                            // ),
+                            obscureText: value.obscureText,
+                            suffix: IconButton(
+                              onPressed: () {
+                                value.toggle();
+                              },
+                              icon: Icon(
+                                value.obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: value.obscureText
+                                    ? Colors.blue
+                                    : Colors.white,
+                              ),
+                              splashRadius: 20,
+                            ),
                           );
                         },
                       ),
